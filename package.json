@@ -1,0 +1,58 @@
+{
+  "name": "awesome-dsh-pet",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "yanzhuang-h",
+  "description": "A Codex Pet-style customizable desktop pet that lives inside DeepSeek Harness.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "desktop-pet",
+    "codex-pet",
+    "plugin",
+    "customizable"
+  ],
+  "homepage": "https://github.com/yanzhuang-h/awesome-dsh-pet#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanzhuang-h/awesome-dsh-pet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yanzhuang-h/awesome-dsh-pet/issues"
+  },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/check.mjs"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.png"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.png",
+    "README.md",
+    "LICENSE",
+    "docs/*.png"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-session"
+      ]
+    }
+  }
+}
