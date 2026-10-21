@@ -1,10 +1,10 @@
 <div align="center">
 
-# Awesome DSH Pet
+# 鲸屿 · Awesome DSH Pet
 
-**一只住在 DeepSeek Harness 里的可自定义 DeepSeek 鲸鱼娘桌宠。**
+**把一小片海，养在 Harness 的角落里。**
 
-Codex Pet 风格 · 非独立应用 · 角色素材只存本机
+一只可个性化定制的 DeepSeek 鲸鱼娘桌宠。Codex Pet 风格 · 非独立应用 · 素材只留本机
 
 ![Code](https://img.shields.io/badge/code-MIT-2f7d5a)
 ![Assets](https://img.shields.io/badge/assets-CC%20BY--NC%204.0-f97316)
@@ -15,30 +15,54 @@ Codex Pet 风格 · 非独立应用 · 角色素材只存本机
 
 > Harness 启动，它出现；Harness 关闭，它离开。没有单独要打开的窗口，也没有额外常驻的后台应用。
 
-![桌面上的鲸鱼娘](docs/preview.png)
+![桌面上的鲸汐](docs/preview.png)
 
 ## 这个项目是什么
 
-Awesome DSH Pet 是 **DeepSeek Harness 的 Client 插件**。它挂载在 Harness Web UI 的 `shell.overlay` 上，所以桌宠会自然地浮在 Harness 界面右下角，跟随页面一起启动、一起关闭。
+**鲸屿（Whale Isle）** 是 **DeepSeek Harness 的 Client 插件**。它挂载在 Harness Web UI 的 `shell.overlay` 上，所以桌宠会自然地浮在 Harness 界面右下角，跟随页面一起启动、一起关闭。
 
-默认角色换成了 **DeepSeek 鲸鱼娘**。你也可以：
+默认角色是 **鲸汐**。打开 **鲸屿手帐**，你可以：
 
-- 在桌宠小屋里切换内置的 **DeepSeek Girl** 和 **Whalechan**；
-- 导入一套 [Codex Pet 社区角色包](https://github.com/legeling/awesome-codex-pet)，获得完整动作动画；
-- 导入一张透明背景的 PNG / GIF / WebP，马上换成自己的角色；
-- 调整大小、拖动位置、隐藏桌宠，或者让它跟着任务的进行状态做动作。
+- 给每位同行者起一个只属于自己的名字，也告诉她该怎么称呼你；
+- 在「温柔 / 元气 / 安静」三种性子之间切换，让她用不同的语气回应你；
+- 用「潮汐蓝 / 暮光紫 / 海盐青 / 樱贝粉」换掉她身边的光；
+- 调整存在感、落脚点，或让她跟着 Harness 的工作节奏一起跑动；
+- 切换内置的 **深澜（DeepSeek Girl）**、**鲸酱（Whalechan）**，或导入自己的 Codex Pet 角色包。
 
 这个项目面向 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) 的图集规格做了兼容，但不是 Codex 官方项目，也与 DeepSeek / OpenAI 没有隶属关系。
 
+## 鲸屿手帐
+
+不是一张冷冰冰的设置表单，而是她的房间。角色、称呼、语气、海色和位置都收在同一页，改动会立即生效并保存在本机。
+
+| 可以调 | 会变成什么 |
+| --- | --- |
+| **给她的名字** | 角色卡片、预览和桌宠标题都使用你的叫法 |
+| **她怎么称呼你** | 在悄悄话和点击回应里出现你的名字 |
+| **她的性子** | 温柔 / 元气 / 安静，三套不同的回应语气 |
+| **今天的海色** | 手帐高亮、选中状态、滑杆与桌宠光晕一起换色 |
+| **存在感** | 65%–135% 的大小 |
+| **落脚点** | 左下 / 右下 / 右上，或直接拖动 |
+
+<p align="center">
+  <img src="docs/settings.png" alt="鲸屿手帐" width="780">
+</p>
+
+<p align="center">
+  <img src="docs/personalization.png" alt="相处方式和落脚点设置" width="680">
+  <br>
+  <sub>继续向下，是存在感、悄悄话和落脚点。</sub>
+</p>
+
 ## 内置角色
 
-Harness 启动后默认出现的是「鲸鱼娘」。打开桌宠小屋，可以在三位初始角色之间切换，不需要额外下载。
+Harness 启动后默认出现的是 **鲸汐**。打开鲸屿手帐，可以在三位初始角色之间切换，不需要额外下载。
 
 | 角色 | 来源 | 授权 |
 | --- | --- | --- |
-| **鲸鱼娘**（默认） | [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop) 的鲸鱼娘形象 | MIT |
-| **DeepSeek Girl** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [legeling](https://github.com/legeling) | CC BY-NC 4.0 |
-| **Whalechan** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [qimi](https://github.com/qishichuan) | CC BY-NC 4.0 |
+| **鲸汐 / Whale Girl**（默认） | [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop) 的鲸鱼娘形象 | MIT |
+| **深澜 / DeepSeek Girl** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [legeling](https://github.com/legeling) | CC BY-NC 4.0 |
+| **鲸酱 / Whalechan** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [qimi](https://github.com/qishichuan) | CC BY-NC 4.0 |
 
 内置图片经过裁切、缩放和重新打包，具体来源、署名和修改说明见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。其中 CC BY-NC 素材仅限非商业使用，**不适用**于本仓库代码的 MIT 许可。
 
@@ -48,15 +72,12 @@ Harness 启动后默认出现的是「鲸鱼娘」。打开桌宠小屋，可以
 - **Codex Pet 图集兼容**：读取 `pet.json` + `spritesheet.webp`，支持 v1（1536×1872，8×9）与 v2（1536×2288，8×11）。
 - **会看状态的小家伙**：任务进行时跑动，等待确认时守候，一轮结束时检查，点击时挥手。
 - **位置与尺寸记忆**：可以按住拖动，位置写入本地设置；刷新或重启后仍然在原处。
-- **角色工坊**：内置角色、Codex 角色包、单张图片三种来源；支持删除、缩放、恢复默认位置。
+- **个性化手帐**：昵称、称呼、性格语气、主题色和位置预设都能调，且只保存在本机。
+- **三种角色来源**：内置角色、Codex 角色包、单张图片；支持删除、缩放、恢复默认位置。
 - **本地优先**：角色 Blob 存放在 IndexedDB，设置有 localStorage；不上传任何素材。
 - **跟随主题**：界面使用 Harness 的 `--dsw-alias-*` 主题变量，深色 / 浅色模式都能融入。
 
-<p align="center">
-  <img src="docs/settings.png" alt="桌宠小屋" width="720">
-</p>
-
-悬停角色右上角会出现设置齿轮与隐藏按钮；桌宠小屋负责角色、大小和陪伴方式。
+悬停角色右上角会出现手帐齿轮与休息按钮。打开手帐，就能把她调成只属于你的样子。
 
 ## 在 DSH 中安装
 
@@ -136,15 +157,15 @@ git pull
 | 单击角色 | 开心表情 / 动作 + 随机回应 |
 | 按住拖动 | 移动桌宠，松手后保存位置 |
 | 点击气泡 | 收起当前回应 |
-| 设置齿轮 | 打开「桌宠小屋」 |
-| 隐藏按钮 / 小屋里的「藏起桌宠」 | 收成右下角的小胶囊，点击可唤醒 |
+| 设置齿轮 | 打开「鲸屿手帐」 |
+| 隐藏按钮 / 手帐里的「让她去休息」 | 收成右下角的小胶囊「叫她回来」，点击可唤醒 |
 | 任务运行 / 等待确认 / 结束 | `running` / `waiting` / `review` 动作 |
 
 任务状态来自 Harness 的 Session 状态；如果同时有多个 Session 在运行，任意一个运行都会让桌宠进入跑动状态。
 
 ## 自定义角色
 
-打开桌宠右上角的齿轮 → **桌宠小屋**。
+悬停桌宠右上角，点齿轮 → **鲸屿手帐**。
 
 ### 方式一：导入 Codex Pet 角色包（推荐，有完整动作）
 
@@ -154,7 +175,7 @@ git pull
    ├─ pet.json
    └─ spritesheet.webp
    ```
-2. 在「桌宠小屋」点击 **导入角色包**，选择这个文件夹。
+2. 在「鲸屿手帐」点击 **迎接新伙伴**，选择这个文件夹。
 3. 导入成功后会立即换上新角色，并可在角色卡片之间切换。
 
 `pet.json` 示例：
@@ -182,7 +203,7 @@ git pull
 
 ### 方式二：导入一张图片 / GIF
 
-点击 **导入一张图片**，选择 PNG / GIF / WebP：
+点击 **带一张照片**，选择 PNG / GIF / WebP：
 
 - 透明背景效果最好；
 - 静态图片会加上轻微呼吸与点击弹跳；
@@ -256,7 +277,7 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 **安装命令提示 desktop profile 只能由 Electron 管理？**
 请使用 Harness 安装目录中的 `resources\runtime\cli\bin\dsh.cmd`，不要使用全局 npm 安装的 `dsh` 命令。
 
-**导入角色包提示图集尺寸不符？**
+**迎接新伙伴时提示图集尺寸不符？**
 检查 `spriteVersionNumber` 与图集尺寸是否匹配（v1 1872 高，v2 2288 高），以及是否漏了 `spritesheet.webp`。本项目只接受 8 列的 Codex Pet 图集。
 
 **桌宠挡住了输入框？**
@@ -270,14 +291,14 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 
 ## 致谢与声明
 
-- 默认「鲸鱼娘」形象来自 [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop)，遵循其 MIT 许可。
-- **DeepSeek Girl** 由 [legeling](https://github.com/legeling) 创作，**Whalechan** 由 [qimi](https://github.com/qishichuan) 创作，均来自 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet)。
+- 默认「鲸汐 / Whale Girl」形象来自 [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop)，遵循其 MIT 许可。
+- **深澜（DeepSeek Girl）** 由 [legeling](https://github.com/legeling) 创作，**鲸酱（Whalechan）** 由 [qimi](https://github.com/qishichuan) 创作，均来自 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet)。
 - 角色格式与动画灵感来自 Codex Pet 社区，感谢其开放的图集规范。
-- 插件代码、角色卡与界面整合由 [yanzhuang-h](https://github.com/yanzhuang-h) 维护。
+- 插件代码、鲸屿手帐与界面整合由 [yanzhuang-h](https://github.com/yanzhuang-h) 维护。
 - 这是一个社区项目，与 DeepSeek、OpenAI、Codex 官方均无隶属关系；内置角色是社区形象 / 非官方演绎。
 
 ## License
 
-**代码**以 [MIT](LICENSE) 许可发布。**内置角色美术**不属于 MIT 代码许可：鲸鱼娘素材遵循上游 MIT / 署名要求；DeepSeek Girl 与 Whalechan 遵循 **CC BY-NC 4.0**，仅限非商业使用。
+**代码**以 [MIT](LICENSE) 许可发布。**内置角色美术**不属于 MIT 代码许可：鲸汐 / Whale Girl 素材遵循上游 MIT / 署名要求；DeepSeek Girl 与 Whalechan 遵循 **CC BY-NC 4.0**，仅限非商业使用。
 
 因此，包含全部内置素材的发行版整体应按**非商业用途**使用；如需商业使用，请移除 CC BY-NC 素材或联系原作者取得授权。完整说明见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。导入的社区角色素材不属于本项目，遵循各自作者 / 角色包的许可。

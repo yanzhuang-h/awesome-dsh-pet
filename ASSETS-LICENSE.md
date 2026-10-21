@@ -4,7 +4,7 @@ The plugin source code in this repository is licensed under the [MIT License](LI
 
 ## 1. Whale Girl (default character and icon)
 
-- **Character:** 鲸鱼娘 / Whale Girl
+- **Character:** 鲸汐 / Whale Girl (the in-app display name for the classic whale girl)
 - **Files:** `src/builtins/whale-girl.png`, the plugin icon derived from it (`icon.png`), and the embedded copy inside `client.js`
 - **Source:** [comreade-123/DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop), file `renderer/assets/DSniang1.png`
 - **Upstream project:** based on [MeteorNOX/DeepSeek-Balance-Whale-Widget](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget)

@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.2.0 — 2026-10-21
+
+### Added
+
+- A redesigned **Whale Isle Journal** (鲸屿手帐) with a large character preview, a two-column layout, and a calmer visual hierarchy.
+- Per-character nicknames and a user name used in replies.
+- Three response tones: Gentle, Bright, and Quiet.
+- Four sea colors: Tide Blue, Dusk Violet, Sea Glass, and Shell Pink. The accent also affects the pet glow, controls, and selection states.
+- Corner presets for the pet's spot (lower left / lower right / upper right) plus drag support.
+- A one-click personalization reset.
+
+### Changed
+
+- Rebranded the in-app experience as **鲸屿 / Whale Isle** and the default whale girl as **鲸汐**.
+- Added Chinese display names for the two Codex companions: **深澜** (DeepSeek Girl) and **鲸酱** (Whalechan); the original names remain as source labels.
+- Reworded the settings UI around the pet's perspective: Companions, Her temperament, Today's sea, Presence, Her spot.
+- Replaced the old paw restore chip with a wave icon and updated the plugin Manager metadata.
+- Fresh README screenshots for the new journal layout.
+
 ## 1.1.0 — 2026-10-21
 
 ### Changed

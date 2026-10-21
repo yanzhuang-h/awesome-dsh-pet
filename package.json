@@ -1,11 +1,11 @@
 {
   "name": "awesome-dsh-pet",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "license": "MIT",
   "author": "yanzhuang-h",
-  "description": "A Codex Pet-style, customizable DeepSeek whale-girl desktop pet that lives inside DeepSeek Harness.",
+  "description": "Whale Isle: a personalized DeepSeek whale-girl desktop pet for DeepSeek Harness.",
   "keywords": [
     "deepseek-harness",
     "dsh",
