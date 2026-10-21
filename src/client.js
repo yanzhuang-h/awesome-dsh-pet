@@ -47,6 +47,41 @@ window.__ModuleLoader__.load({
       quiet: ['bubble.quiet1', 'bubble.quiet2', 'bubble.quiet3', 'bubble.quiet4']
     }
 
+    const VOICE_PACKS = {
+      'shark-pepper': {
+        gentle: [
+          'pet.sharkPepper.gentle1',
+          'pet.sharkPepper.gentle2',
+          'pet.sharkPepper.gentle3',
+          'pet.sharkPepper.gentle4',
+          'pet.sharkPepper.gentle5'
+        ],
+        bright: [
+          'pet.sharkPepper.bright1',
+          'pet.sharkPepper.bright2',
+          'pet.sharkPepper.bright3',
+          'pet.sharkPepper.bright4',
+          'pet.sharkPepper.bright5'
+        ],
+        quiet: [
+          'pet.sharkPepper.quiet1',
+          'pet.sharkPepper.quiet2',
+          'pet.sharkPepper.quiet3',
+          'pet.sharkPepper.quiet4'
+        ],
+        named: {
+          gentle: 'pet.sharkPepper.gentleNamed',
+          bright: 'pet.sharkPepper.brightNamed',
+          quiet: 'pet.sharkPepper.quietNamed'
+        },
+        welcome: 'pet.sharkPepper.welcome',
+        welcomeNamed: 'pet.sharkPepper.welcomeNamed',
+        running: 'pet.sharkPepper.running',
+        waiting: 'pet.sharkPepper.waiting',
+        done: 'pet.sharkPepper.done'
+      }
+    }
+
     const ZH = {
       'brand.eyebrow': 'WHALE ISLE',
       'pet.whaleGirl.name': '鲸汐',
@@ -62,6 +97,28 @@ window.__ModuleLoader__.load({
       'pet.sharkPepper.source': '铁甲小宝 · 同人',
       'pet.sharkPepper.desc': '《铁甲小宝》鲨鱼辣椒的同人伙伴：日常是经典鲨鱼机器人，跳跃时会超级变换，还会举起蓝色牙刷。',
       'pet.sharkPepper.author': '社区同人',
+      'pet.sharkPepper.gentle1': '喂，别急。本大爷在这儿，陪你慢慢来。',
+      'pet.sharkPepper.gentle2': '抬起头。还没到认输的时候。',
+      'pet.sharkPepper.gentle3': '累了就喘口气，本大爷替你盯着。',
+      'pet.sharkPepper.gentle4': '这点小坎，撞一下就过去了。',
+      'pet.sharkPepper.gentle5': '别老低着头，本大爷看着都替你着急。',
+      'pet.sharkPepper.gentleNamed': '{name}，别急着认输。本大爷还在呢。',
+      'pet.sharkPepper.bright1': '喂！抬起头，让本大爷看看你的气势！',
+      'pet.sharkPepper.bright2': '就这点事？冲过去，别给它面子！',
+      'pet.sharkPepper.bright3': '本大爷看好你，输了算我的！',
+      'pet.sharkPepper.bright4': '把牙咬紧，一口气撞穿它！',
+      'pet.sharkPepper.bright5': '你负责往前冲，本大爷负责给你撑腰。',
+      'pet.sharkPepper.brightNamed': '{name}，冲！本大爷给你压阵！',
+      'pet.sharkPepper.quiet1': '……喂，还在吗？',
+      'pet.sharkPepper.quiet2': '别认输。本大爷还没看够。',
+      'pet.sharkPepper.quiet3': '稳住。你能行。',
+      'pet.sharkPepper.quiet4': '……需要帮忙就吭声。',
+      'pet.sharkPepper.quietNamed': '……{name}，别硬撑。',
+      'pet.sharkPepper.welcome': '喂，本大爷来了。今天也给我打起精神。',
+      'pet.sharkPepper.welcomeNamed': '喂，{name}。本大爷来了，今天也给我打起精神。',
+      'pet.sharkPepper.running': '上啊！本大爷在旁边给你压阵。',
+      'pet.sharkPepper.waiting': '喂，轮到你拍板了，别磨蹭。',
+      'pet.sharkPepper.done': '干得漂亮。这才像本大爷看中的人。',
       'tag.fanArt': '非官方同人',
       'bubble.morning': '早上好呀，今天也慢慢来。',
       'bubble.forenoon': '上午好，记得喝口水再继续。',
@@ -93,7 +150,7 @@ window.__ModuleLoader__.load({
       'bubble.drag': '轻一点放我下来～',
       'aria.pet': '和桌宠互动',
       'aria.settings': '打开鲸屿手帐',
-      'aria.hide': '让她去休息',
+      'aria.hide': '让 TA 去休息',
       'aria.close': '合上手帐',
       'aria.delete': '删除这个角色',
       'aria.importFolder': '导入 Codex 角色包',
@@ -104,15 +161,15 @@ window.__ModuleLoader__.load({
       'settings.charactersHint': '选一位此刻陪着你的人。',
       'settings.customEmpty': '还没有导入角色。',
       'settings.identity': '名字与称呼',
-      'settings.identityHint': '让她知道该怎么叫你。',
-      'settings.nickname': '给她的名字',
+      'settings.identityHint': '让 TA 知道该怎么叫你。',
+      'settings.nickname': '给 TA 的名字',
       'settings.nicknamePlaceholder': '留空就用原名',
       'settings.nicknameHint': '只属于你的叫法。',
-      'settings.userName': '她怎么称呼你',
+      'settings.userName': 'TA 怎么称呼你',
       'settings.userNamePlaceholder': '你的名字（可选）',
-      'settings.userNameHint': '会出现在她的悄悄话里。',
-      'settings.tone': '她的性子',
-      'settings.toneHint': '换一种她回应你的语气。',
+      'settings.userNameHint': '会出现在 TA 的悄悄话里。',
+      'settings.tone': 'TA 的性子',
+      'settings.toneHint': '换一种 TA 回应你的语气。',
       'tone.gentle': '温柔',
       'tone.gentleHint': '慢慢来',
       'tone.bright': '元气',
@@ -120,7 +177,7 @@ window.__ModuleLoader__.load({
       'tone.quiet': '安静',
       'tone.quietHint': '字少一点',
       'settings.palette': '今天的海色',
-      'settings.paletteHint': '把她身边的光也一起换掉。',
+      'settings.paletteHint': '把 TA 身边的光也一起换掉。',
       'accent.tide': '潮汐蓝',
       'accent.dusk': '暮光紫',
       'accent.mint': '海盐青',
@@ -132,26 +189,26 @@ window.__ModuleLoader__.load({
       'settings.imported': '已加入：',
       'settings.importError': '导入失败：',
       'settings.size': '存在感',
-      'settings.sizeHint': '让她更轻巧，或者更醒目一点。',
+      'settings.sizeHint': '让 TA 更轻巧，或者更醒目一点。',
       'settings.behavior': '相处方式',
       'settings.bubbles': '悄悄话',
       'settings.bubblesHint': '偶尔说句话，也会回应你的点击。',
       'settings.sound': '轻声回应',
-      'settings.soundHint': '点击她时，轻轻应你一声。',
+      'settings.soundHint': '点击 TA 时，轻轻应你一声。',
       'settings.reactive': '跟着工作节奏',
-      'settings.reactiveHint': '你忙起来时，她会在旁边跑动。',
+      'settings.reactiveHint': '你忙起来时，TA 会在旁边跑动。',
       'settings.position': '落脚点',
-      'settings.positionHint': '也可以直接拖动她。',
+      'settings.positionHint': '也可以直接拖动 TA。',
       'settings.cornerLeft': '左下',
       'settings.cornerRight': '右下',
       'settings.cornerTop': '右上',
       'settings.reset': '恢复初始',
       'settings.done': '完成',
-      'settings.hide': '让她去休息',
-      'settings.restore': '叫她回来',
+      'settings.hide': '让 TA 去休息',
+      'settings.restore': '叫 TA 回来',
       'settings.localOnly': '只存在这台设备',
       'settings.by': '形象：',
-      'settings.formatNote': '她的图集遵循 Codex Pet 8×9 / 8×11 规格。所有素材都只留在这台设备。',
+      'settings.formatNote': 'TA 的图集遵循 Codex Pet 8×9 / 8×11 规格。所有素材都只留在这台设备。',
       'tag.builtin': '鲸屿常驻',
       'tag.codex': 'Codex 图集',
       'tag.image': '照片',
@@ -183,6 +240,28 @@ window.__ModuleLoader__.load({
       'pet.sharkPepper.source': 'B-Robo Kabutack · Fan art',
       'pet.sharkPepper.desc': 'An unofficial Shark Pepper companion inspired by B-Robo Kabutack, with a classic shark robot form, a super transformation, and a blue toothbrush.',
       'pet.sharkPepper.author': 'Community fan art',
+      'pet.sharkPepper.gentle1': "Hey, no rush. I'm right here.",
+      'pet.sharkPepper.gentle2': 'Lift your head. You are not done yet.',
+      'pet.sharkPepper.gentle3': 'Take a breath. I will keep watch.',
+      'pet.sharkPepper.gentle4': 'A little wall like this? We break through it.',
+      'pet.sharkPepper.gentle5': "Don't keep looking down. I'm rooting for you.",
+      'pet.sharkPepper.gentleNamed': "Hey, {name}. Don't give up on me.",
+      'pet.sharkPepper.bright1': 'Hey! Lift your head and show me some spirit!',
+      'pet.sharkPepper.bright2': 'This little thing? Charge through it!',
+      'pet.sharkPepper.bright3': "I'm counting on you. I'll take the blame if you lose!",
+      'pet.sharkPepper.bright4': 'Grit your teeth and break through in one go!',
+      'pet.sharkPepper.bright5': "You charge. I've got your back.",
+      'pet.sharkPepper.brightNamed': 'Go, {name}! I am right behind you!',
+      'pet.sharkPepper.quiet1': '...Hey, still there?',
+      'pet.sharkPepper.quiet2': "Don't give up. I'm not done watching.",
+      'pet.sharkPepper.quiet3': 'Steady. You can do this.',
+      'pet.sharkPepper.quiet4': '...Say something if you need help.',
+      'pet.sharkPepper.quietNamed': "...{name}, don't push yourself too hard.",
+      'pet.sharkPepper.welcome': "Hey, I'm here. Show me some spirit today.",
+      'pet.sharkPepper.welcomeNamed': "Hey, {name}. I'm here. Show me some spirit today.",
+      'pet.sharkPepper.running': "Go! I'm right here backing you up.",
+      'pet.sharkPepper.waiting': "Hey, it's your call. Don't keep me waiting.",
+      'pet.sharkPepper.done': "Nice work. That's exactly why I picked you.",
       'tag.fanArt': 'Unofficial fan art',
       'bubble.morning': 'Morning. Let us take today gently.',
       'bubble.forenoon': 'Good morning. Remember to sip some water.',
@@ -225,15 +304,15 @@ window.__ModuleLoader__.load({
       'settings.charactersHint': 'Choose who keeps you company right now.',
       'settings.customEmpty': 'No imported characters yet.',
       'settings.identity': 'Names',
-      'settings.identityHint': 'Let her know how to call you.',
-      'settings.nickname': 'Her name',
+      'settings.identityHint': 'Let them know how to call you.',
+      'settings.nickname': 'Their name',
       'settings.nicknamePlaceholder': 'Leave blank to keep the original',
       'settings.nicknameHint': 'A name only you use.',
-      'settings.userName': 'What should she call you?',
+      'settings.userName': 'What should they call you?',
       'settings.userNamePlaceholder': 'Your name (optional)',
-      'settings.userNameHint': 'It will show up in her whispers.',
-      'settings.tone': 'Her temperament',
-      'settings.toneHint': 'Change the way she answers you.',
+      'settings.userNameHint': 'It will show up in their whispers.',
+      'settings.tone': 'Their temperament',
+      'settings.toneHint': 'Change the way they answer you.',
       'tone.gentle': 'Gentle',
       'tone.gentleHint': 'Take it slow',
       'tone.bright': 'Bright',
@@ -241,7 +320,7 @@ window.__ModuleLoader__.load({
       'tone.quiet': 'Quiet',
       'tone.quietHint': 'Fewer words',
       'settings.palette': 'Today’s sea',
-      'settings.paletteHint': 'Change the light around her too.',
+      'settings.paletteHint': 'Change the light around them too.',
       'accent.tide': 'Tide Blue',
       'accent.dusk': 'Dusk Violet',
       'accent.mint': 'Sea Glass',
@@ -253,26 +332,26 @@ window.__ModuleLoader__.load({
       'settings.imported': 'Added: ',
       'settings.importError': 'Import failed: ',
       'settings.size': 'Presence',
-      'settings.sizeHint': 'Make her lighter, or a little more present.',
+      'settings.sizeHint': 'Make them lighter, or a little more present.',
       'settings.behavior': 'Together',
       'settings.bubbles': 'Whispers',
       'settings.bubblesHint': 'A few words now and then, plus a reply when you tap.',
       'settings.sound': 'Little voice',
       'settings.soundHint': 'A soft sound when you tap her.',
       'settings.reactive': 'Follow your work',
-      'settings.reactiveHint': 'She runs along while Harness works.',
-      'settings.position': 'Her spot',
-      'settings.positionHint': 'You can also drag her anywhere.',
+      'settings.reactiveHint': 'They run along while Harness works.',
+      'settings.position': 'Their spot',
+      'settings.positionHint': 'You can also drag them anywhere.',
       'settings.cornerLeft': 'Lower left',
       'settings.cornerRight': 'Lower right',
       'settings.cornerTop': 'Upper right',
       'settings.reset': 'Reset look',
       'settings.done': 'Done',
-      'settings.hide': 'Let her rest',
-      'settings.restore': 'Call her back',
+      'settings.hide': 'Let them rest',
+      'settings.restore': 'Call them back',
       'settings.localOnly': 'Only on this device',
       'settings.by': 'Art by ',
-      'settings.formatNote': 'Her atlas follows Codex Pet 8×9 / 8×11. Everything stays on this device.',
+      'settings.formatNote': 'Their atlas follows Codex Pet 8×9 / 8×11. Everything stays on this device.',
       'tag.builtin': 'Whale Isle resident',
       'tag.codex': 'Codex atlas',
       'tag.image': 'Photo',
@@ -1879,6 +1958,7 @@ window.__ModuleLoader__.load({
       )
       const selectedName = displayNameFor(selectedPet, settings.nicknames)
       const selectedNickname = (settings.nicknames && settings.nicknames[selectedPet.id]) || ''
+      const voicePack = VOICE_PACKS[selectedPet.id] || null
       const accent = ACCENTS[settings.accent] || ACCENTS.tide
       const themeVars = useMemo(
         () => ({
@@ -2000,7 +2080,11 @@ window.__ModuleLoader__.load({
             first = !localStorage.getItem(GREETED_KEY)
           } catch {}
           const base = t(`bubble.${greetingKey(new Date().getHours())}`)
-          const welcome = (settings.userName ? t('bubble.welcomeNamed') : t('bubble.welcome'))
+          const welcomeKey =
+            settings.userName && voicePack?.welcomeNamed
+              ? voicePack.welcomeNamed
+              : voicePack?.welcome || (settings.userName ? 'bubble.welcomeNamed' : 'bubble.welcome')
+          const welcome = t(welcomeKey)
             .replaceAll('{pet}', () => selectedName)
             .replaceAll('{name}', () => settings.userName)
           say(first ? `${base} ${welcome}` : base, first ? 7600 : 5200)
@@ -2009,7 +2093,7 @@ window.__ModuleLoader__.load({
           } catch {}
         }, 800)
         return () => window.clearTimeout(timer)
-      }, [say, settings.bubbles, settings.hidden, settings.userName, selectedName, t])
+      }, [say, settings.bubbles, settings.hidden, settings.userName, selectedName, t, voicePack])
 
       useEffect(() => {
         if (!settings.reactive) {
@@ -2021,24 +2105,25 @@ window.__ModuleLoader__.load({
         if (running && !previousRunning.current) {
           setReviewing(false)
           if (reviewTimer.current) window.clearTimeout(reviewTimer.current)
+          if (voicePack?.running) say(t(voicePack.running), 3600)
         }
         if (!running && previousRunning.current) {
           setReviewing(true)
           if (reviewTimer.current) window.clearTimeout(reviewTimer.current)
           reviewTimer.current = window.setTimeout(() => setReviewing(false), 6200)
-          say(t('bubble.done'), 4200)
+          say(t(voicePack?.done || 'bubble.done'), 4200)
         }
         previousRunning.current = Boolean(running)
-      }, [running, say, settings.reactive, t])
+      }, [running, say, settings.reactive, t, voicePack])
 
       useEffect(() => {
         if (!settings.reactive) {
           previousWaiting.current = Boolean(waiting)
           return
         }
-        if (waiting && !previousWaiting.current) say(t('bubble.waiting'), 4200)
+        if (waiting && !previousWaiting.current) say(t(voicePack?.waiting || 'bubble.waiting'), 4200)
         previousWaiting.current = Boolean(waiting)
-      }, [waiting, say, settings.reactive, t])
+      }, [waiting, say, settings.reactive, t, voicePack])
 
       useEffect(() => {
         if (!settingsOpen) return
@@ -2096,14 +2181,16 @@ window.__ModuleLoader__.load({
 
       const sayClick = useCallback(() => {
         const tone = TONES.includes(settings.tone) ? settings.tone : 'gentle'
-        const lines = (TONE_LINES[tone] || TONE_LINES.gentle).map((key) => t(key)).filter(Boolean)
+        const keys = voicePack?.[tone] || TONE_LINES[tone] || TONE_LINES.gentle
+        const lines = keys.map((key) => t(key)).filter(Boolean)
         if (settings.userName) {
-          lines.push(t(`bubble.${tone}Named`).replaceAll('{name}', () => settings.userName))
+          const namedKey = voicePack?.named?.[tone] || `bubble.${tone}Named`
+          lines.push(t(namedKey).replaceAll('{name}', () => settings.userName))
         }
         const line = pickRandom(lines, lastClickLine.current)
         lastClickLine.current = line
         say(line, 4800)
-      }, [say, settings.tone, settings.userName, t])
+      }, [say, settings.tone, settings.userName, t, voicePack])
 
       const playPetSound = useCallback(() => {
         if (!settings.sound) return

@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.4.0 — 2026-10-21
+
+### Added
+
+- A dedicated dialogue pack for **鲨鱼辣椒 / Shark Pepper**:
+  - click responses for gentle / bright / quiet tones;
+  - a named response using the user's chosen name;
+  - a first-meeting welcome;
+  - task-start, waiting, and task-complete cheers.
+- The dialogue keeps his proud, rough but supportive “本大爷” voice.
+
+### Changed
+
+- The journal copy now uses neutral **TA / they** pronouns so the same UI works for the female whale companions and Shark Pepper.
+- Updated the settings screenshots for the four-character gallery and neutral labels.
+
 ## 1.3.0 — 2026-10-21
 
 ### Added
