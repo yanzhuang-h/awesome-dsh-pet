@@ -15,7 +15,7 @@ For bugs, include the Harness version, the steps to reproduce, and the relevant 
 ## Pull requests
 
 1. Fork the repo and create a focused branch.
-2. Edit `src/client.js` or the SVG sources rather than editing the generated `client.js` by hand.
+2. Edit `src/client.js` or the files under `src/builtins/` rather than editing the generated `client.js` by hand.
 3. Run:
    ```powershell
    npm run build
@@ -28,8 +28,10 @@ Please keep the plugin dependency-free at runtime. UI copy should stay in the lo
 
 ## Character assets
 
-- Do not commit community character packages or third-party artwork unless you are the author or have explicit permission.
-- Character packs remain the responsibility of their authors and keep their own licenses.
+- Do not add third-party artwork unless its license permits redistribution and you can provide source + attribution.
+- Do not commit community character packages to the plugin; they belong to their authors and keep their own licenses.
+- Every built-in asset must be listed in `ASSETS-LICENSE.md` with author, source URL, license, and any modifications.
+- Built-in characters with non-commercial licenses must remain clearly separated from the MIT code license.
 - If you add an original built-in character, include its source artwork and license information.
 
 ## Compatibility

@@ -1,11 +1,11 @@
 {
   "name": "awesome-dsh-pet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "license": "MIT",
   "author": "yanzhuang-h",
-  "description": "A Codex Pet-style customizable desktop pet that lives inside DeepSeek Harness.",
+  "description": "A Codex Pet-style, customizable DeepSeek whale-girl desktop pet that lives inside DeepSeek Harness.",
   "keywords": [
     "deepseek-harness",
     "dsh",
@@ -40,6 +40,7 @@
     "icon.png",
     "README.md",
     "LICENSE",
+    "ASSETS-LICENSE.md",
     "docs/*.png"
   ],
   "dsh": {

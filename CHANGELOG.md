@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.0 — 2026-10-21
+
+### Changed
+
+- Replaced the original Mochi cat with a DeepSeek whale-girl theme.
+- The default character is now **Whale Girl**, migrated from the DeepSeek whale balance widget.
+- Added two more initial characters from the Codex Pet community:
+  - **DeepSeek Girl** by legeling
+  - **Whalechan** by qimi
+- The character gallery now opens with three built-in characters; custom imports remain unchanged.
+- New whale-girl plugin icon.
+- Built-in spritesheets are resized and embedded in the client bundle, keeping the plugin self-contained.
+
+### Documentation
+
+- Added built-in character credits, source links, and separate asset licensing in `ASSETS-LICENSE.md`.
+- Updated the README and screenshots for the new default character.
+
 ## 1.0.0 — 2026-10-21
 
 First public release.

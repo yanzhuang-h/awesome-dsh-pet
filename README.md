@@ -2,11 +2,12 @@
 
 # Awesome DSH Pet
 
-**一只住在 DeepSeek Harness 里的可自定义桌宠。**
+**一只住在 DeepSeek Harness 里的可自定义 DeepSeek 鲸鱼娘桌宠。**
 
 Codex Pet 风格 · 非独立应用 · 角色素材只存本机
 
-![License](https://img.shields.io/badge/license-MIT-2f7d5a)
+![Code](https://img.shields.io/badge/code-MIT-2f7d5a)
+![Assets](https://img.shields.io/badge/assets-CC%20BY--NC%204.0-f97316)
 ![Harness](https://img.shields.io/badge/DeepSeek%20Harness-0.2.1--rc.2-4d6bfe)
 ![Atlas](https://img.shields.io/badge/Codex%20Pet-v1%20%7C%20v2-d9a441)
 
@@ -14,19 +15,32 @@ Codex Pet 风格 · 非独立应用 · 角色素材只存本机
 
 > Harness 启动，它出现；Harness 关闭，它离开。没有单独要打开的窗口，也没有额外常驻的后台应用。
 
-![桌面上的麻薯](docs/preview.png)
+![桌面上的鲸鱼娘](docs/preview.png)
 
 ## 这个项目是什么
 
 Awesome DSH Pet 是 **DeepSeek Harness 的 Client 插件**。它挂载在 Harness Web UI 的 `shell.overlay` 上，所以桌宠会自然地浮在 Harness 界面右下角，跟随页面一起启动、一起关闭。
 
-默认角色「麻薯」是原创的云朵猫。你也可以：
+默认角色换成了 **DeepSeek 鲸鱼娘**。你也可以：
 
+- 在桌宠小屋里切换内置的 **DeepSeek Girl** 和 **Whalechan**；
 - 导入一套 [Codex Pet 社区角色包](https://github.com/legeling/awesome-codex-pet)，获得完整动作动画；
 - 导入一张透明背景的 PNG / GIF / WebP，马上换成自己的角色；
 - 调整大小、拖动位置、隐藏桌宠，或者让它跟着任务的进行状态做动作。
 
 这个项目面向 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) 的图集规格做了兼容，但不是 Codex 官方项目，也与 DeepSeek / OpenAI 没有隶属关系。
+
+## 内置角色
+
+Harness 启动后默认出现的是「鲸鱼娘」。打开桌宠小屋，可以在三位初始角色之间切换，不需要额外下载。
+
+| 角色 | 来源 | 授权 |
+| --- | --- | --- |
+| **鲸鱼娘**（默认） | [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop) 的鲸鱼娘形象 | MIT |
+| **DeepSeek Girl** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [legeling](https://github.com/legeling) | CC BY-NC 4.0 |
+| **Whalechan** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [qimi](https://github.com/qishichuan) | CC BY-NC 4.0 |
+
+内置图片经过裁切、缩放和重新打包，具体来源、署名和修改说明见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。其中 CC BY-NC 素材仅限非商业使用，**不适用**于本仓库代码的 MIT 许可。
 
 ## 特性
 
@@ -187,7 +201,7 @@ git pull
 项目没有运行时依赖，只有 Node 内置模块与 Harness 提供的 React / Slot API。
 
 ```powershell
-npm run build     # src/client.js + src/mochi-*.svg → client.js
+npm run build     # src/client.js + src/builtins/* → client.js
 npm run check     # manifest / 导出 / 图标 / 语法检查
 ```
 
@@ -198,8 +212,7 @@ awesome-dsh-pet/
 ├─ client.js            # 构建产物：Client 半，注册到 shell.overlay
 ├─ src/
 │  ├─ client.js         # 可维护源码
-│  ├─ mochi-idle.svg    # 内置角色
-│  └─ mochi-happy.svg
+│  └─ builtins/         # 三位内置角色的图片 / 图集
 ├─ index.js             # Host 半，空实现
 ├─ cordis.patch.yml     # 插入 awesome-dsh-pet 这一行
 ├─ package.json         # bundle + Client manifest
@@ -211,7 +224,7 @@ awesome-dsh-pet/
    └─ check.mjs
 ```
 
-修改 `src/client.js` 或 `src/*.svg` 后运行 `npm run build`。如果要修改动画，请参考 `src/client.js` 里的 `SPRITE` 表和 `PetOverlay` 状态映射。
+修改 `src/client.js` 或 `src/builtins/*` 后运行 `npm run build`。如果要修改动画，请参考 `src/client.js` 里的 `SPRITE` 表和 `PetOverlay` 状态映射。新增内置角色时，请同步更新本文件、`ASSETS-LICENSE.md` 和构建脚本中的素材列表。
 
 Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、主题 token 和插件 manifest 仍处于预览阶段，升级 Harness 后可能需要同步适配。
 
@@ -221,7 +234,7 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 - [ ] 直接列出本机 `~/.codex/pets` 中已安装的角色
 - [ ] 拖放导入、ZIP 导入
 - [ ] 每个角色独立台词 / 声音
-- [ ] 更多内置原创角色
+- [ ] 更多内置角色与动作
 - [ ] 浅色主题细节打磨与多语言完善
 - [ ] 一键安装脚本 / 插件市场条目
 
@@ -249,15 +262,22 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 **桌宠挡住了输入框？**
 拖动它到其他位置，或点击悬停时的隐藏按钮。位置会保存。
 
+**可以商用吗？**
+插件代码是 MIT；但内置的 DeepSeek Girl 和 Whalechan 素材是 CC BY-NC 4.0，所以**包含它们的发行版不能直接商用**。商业使用请移除这两个素材并重新构建，或联系原作者取得授权，详见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。
+
 **如何彻底移除？**
 在插件页面移除插件；如需要，再清除 Harness 站点的 localStorage / IndexedDB 数据。
 
 ## 致谢与声明
 
-- 角色格式与动画灵感来自 [Codex Pet](https://github.com/legeling/awesome-codex-pet)，感谢其开放的图集规范与社区。
-- 默认角色「麻薯」、插件图标与界面为本项目原创。
-- 这是一个社区项目，与 DeepSeek、OpenAI、Codex 官方均无隶属关系。
+- 默认「鲸鱼娘」形象来自 [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop)，遵循其 MIT 许可。
+- **DeepSeek Girl** 由 [legeling](https://github.com/legeling) 创作，**Whalechan** 由 [qimi](https://github.com/qishichuan) 创作，均来自 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet)。
+- 角色格式与动画灵感来自 Codex Pet 社区，感谢其开放的图集规范。
+- 插件代码、角色卡与界面整合由 [yanzhuang-h](https://github.com/yanzhuang-h) 维护。
+- 这是一个社区项目，与 DeepSeek、OpenAI、Codex 官方均无隶属关系；内置角色是社区形象 / 非官方演绎。
 
 ## License
 
-代码以 [MIT](LICENSE) 许可发布。导入的社区角色素材不属于本项目，遵循各自作者 / 角色包的许可。
+**代码**以 [MIT](LICENSE) 许可发布。**内置角色美术**不属于 MIT 代码许可：鲸鱼娘素材遵循上游 MIT / 署名要求；DeepSeek Girl 与 Whalechan 遵循 **CC BY-NC 4.0**，仅限非商业使用。
+
+因此，包含全部内置素材的发行版整体应按**非商业用途**使用；如需商业使用，请移除 CC BY-NC 素材或联系原作者取得授权。完整说明见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。导入的社区角色素材不属于本项目，遵循各自作者 / 角色包的许可。

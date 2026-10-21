@@ -6,13 +6,16 @@ window.__ModuleLoader__.load({
     const h = React.createElement
 
     const NS = 'dsh-pet'
-    const BUILTIN_ID = 'mochi'
+    const DEFAULT_PET_ID = 'whale-girl'
     const SETTINGS_KEY = 'dsh-pet.settings.v1'
-    const GREETED_KEY = 'dsh-pet.greeted.v1'
+    const GREETED_KEY = 'dsh-pet.greeted.v2'
     const DB_NAME = 'dsh-pet.pets.v1'
     const DB_STORE = 'pets'
-    const MOCHI_IDLE = '__MOCHI_IDLE_DATA__'
-    const MOCHI_HAPPY = '__MOCHI_HAPPY_DATA__'
+    const WHALE_GIRL_IMAGE = '__WHALE_GIRL_DATA__'
+    const DEEPSEEK_GIRL_SHEET = '__DEEPSEEK_GIRL_SHEET__'
+    const DEEPSEEK_WHALECHAN_SHEET = '__DEEPSEEK_WHALECHAN_SHEET__'
+    const BUILTIN_CELL_WIDTH = 168
+    const BUILTIN_CELL_HEIGHT = 182
     const PET_WIDTH = 180
     const PET_HEIGHT = 195
     const BOTTOM_GAP = 104
@@ -27,9 +30,12 @@ window.__ModuleLoader__.load({
     }
 
     const ZH = {
-      'pet.builtin.name': '麻薯',
-      'pet.builtin.desc': '一只把星星别在耳朵上的麻薯猫，最擅长陪你发呆。',
-      'pet.builtin.author': 'DSH Pet',
+      'pet.whaleGirl.name': '鲸鱼娘',
+      'pet.whaleGirl.desc': '从 DeepSeek 小鲸鱼挂件游来的经典鲸鱼娘，安静地陪你待在桌面一角。',
+      'pet.deepseekGirl.name': 'DeepSeek Girl',
+      'pet.deepseekGirl.desc': '蓝发、鲸鳍和鲸尾的 DeepSeek 鲸鱼少女，来自 Codex Pet 社区。',
+      'pet.whalechan.name': 'Whalechan',
+      'pet.whalechan.desc': 'Q 版蓝鲸女仆，抱着小本子陪你在 Harness 里工作。',
       'bubble.morning': '早上好呀，今天也慢慢来。',
       'bubble.forenoon': '上午好，记得喝口水再继续。',
       'bubble.noon': '中午啦，要好好吃饭哦。',
@@ -76,7 +82,7 @@ window.__ModuleLoader__.load({
       'settings.hide': '藏起桌宠',
       'settings.restore': '唤醒桌宠',
       'settings.formatNote': '角色包遵循 Codex Pet 的 8×9 或 8×11 图集规格。素材只保存在本机。',
-      'tag.builtin': '内置 · 云朵猫',
+      'tag.builtin': '内置 · DeepSeek',
       'tag.codex': 'Codex 图集',
       'tag.image': '图片',
       'tag.localAuthor': '本机导入',
@@ -93,9 +99,12 @@ window.__ModuleLoader__.load({
     }
 
     const EN = {
-      'pet.builtin.name': 'Mochi',
-      'pet.builtin.desc': 'A little rice-cake cat with a star on its ear, happiest when keeping you company.',
-      'pet.builtin.author': 'DSH Pet',
+      'pet.whaleGirl.name': 'Whale Girl',
+      'pet.whaleGirl.desc': 'The classic DeepSeek whale girl from the balance widget, quietly keeping you company.',
+      'pet.deepseekGirl.name': 'DeepSeek Girl',
+      'pet.deepseekGirl.desc': 'A blue-haired DeepSeek whale girl with fins and a whale tail, from the Codex Pet community.',
+      'pet.whalechan.name': 'Whalechan',
+      'pet.whalechan.desc': 'A super-deformed blue whale maid with a little notebook, keeping you company in Harness.',
       'bubble.morning': 'Morning. Let us take today gently.',
       'bubble.forenoon': 'Good morning. Remember to sip some water.',
       'bubble.noon': 'It is noon. Please have a proper lunch.',
@@ -142,7 +151,7 @@ window.__ModuleLoader__.load({
       'settings.hide': 'Hide pet',
       'settings.restore': 'Wake pet',
       'settings.formatNote': 'Packages follow the Codex Pet 8×9 or 8×11 atlas format. Everything stays on this machine.',
-      'tag.builtin': 'Built in · Cloud cat',
+      'tag.builtin': 'Built in · DeepSeek',
       'tag.codex': 'Codex atlas',
       'tag.image': 'Image',
       'tag.localAuthor': 'Local import',
@@ -215,10 +224,19 @@ window.__ModuleLoader__.load({
         width: 100%;
         height: 100%;
         object-fit: contain;
+        object-position: 50% 100%;
         pointer-events: none;
         user-select: none;
         -webkit-user-drag: none;
         filter: drop-shadow(0 8px 9px rgba(31, 21, 13, .18));
+      }
+      .dsp-is-portrait .dsp-art {
+        filter: drop-shadow(0 9px 14px rgba(25, 45, 92, .26));
+      }
+      .dsp-is-portrait .dsp-ground {
+        width: 68%;
+        height: 12%;
+        background: radial-gradient(ellipse at center, rgba(64, 111, 196, .33), rgba(64, 111, 196, 0) 70%);
       }
       .dsp-sheet { width: 100%; height: 100%; display: block; pointer-events: none; }
       .dsp-is-running .dsp-art-wrap { animation: dsp-run-bob .58s ease-in-out infinite; }
@@ -528,7 +546,7 @@ window.__ModuleLoader__.load({
     `
 
     const DEFAULT_SETTINGS = {
-      selectedId: BUILTIN_ID,
+      selectedId: DEFAULT_PET_ID,
       scale: 1,
       bubbles: true,
       reactive: true,
@@ -561,7 +579,7 @@ window.__ModuleLoader__.load({
         const raw = JSON.parse(localStorage.getItem(SETTINGS_KEY) || 'null')
         if (!raw || typeof raw !== 'object') return { ...DEFAULT_SETTINGS }
         return {
-          selectedId: typeof raw.selectedId === 'string' ? raw.selectedId : BUILTIN_ID,
+          selectedId: typeof raw.selectedId === 'string' ? raw.selectedId : DEFAULT_PET_ID,
           scale: Number.isFinite(Number(raw.scale)) ? clamp(Number(raw.scale), 0.65, 1.35) : 1,
           bubbles: raw.bubbles !== false,
           reactive: raw.reactive !== false,
@@ -689,7 +707,7 @@ window.__ModuleLoader__.load({
     }
 
     function tagFor(pet, t) {
-      if (pet.kind === 'builtin') return t('tag.builtin')
+      if (pet.builtin) return t('tag.builtin')
       if (pet.kind === 'sheet') return `${t('tag.codex')} v${pet.spriteVersion || 1}`
       return t('tag.image')
     }
@@ -783,8 +801,11 @@ window.__ModuleLoader__.load({
       return h('svg', { className: 'dsp-icon', viewBox: '0 0 24 24', 'aria-hidden': true }, paths[name] || paths.paw)
     }
 
-    function PetThumb({ pet, t }) {
+    function PetThumb({ pet }) {
       const canvasRef = useRef(null)
+      const cellWidth = pet.cellWidth || 192
+      const cellHeight = pet.cellHeight || 208
+
       useEffect(() => {
         if (pet.kind !== 'sheet' || !canvasRef.current) return
         let cancelled = false
@@ -793,27 +814,45 @@ window.__ModuleLoader__.load({
           if (cancelled || !canvasRef.current) return
           const ctx = canvasRef.current.getContext('2d')
           if (!ctx) return
-          ctx.clearRect(0, 0, 192, 208)
-          ctx.drawImage(img, 0, 0, 192, 208, 0, 0, 192, 208)
+          const zoom = 0.8
+          const sourceWidth = cellWidth * zoom
+          const sourceHeight = cellHeight * zoom
+          ctx.clearRect(0, 0, cellWidth, cellHeight)
+          ctx.drawImage(
+            img,
+            (cellWidth - sourceWidth) / 2,
+            (cellHeight - sourceHeight) / 2,
+            sourceWidth,
+            sourceHeight,
+            0,
+            0,
+            cellWidth,
+            cellHeight
+          )
         }
         img.src = pet.url
         return () => {
           cancelled = true
           img.onload = null
         }
-      }, [pet.url, pet.kind])
+      }, [pet.url, pet.kind, cellWidth, cellHeight])
 
-      if (pet.kind === 'builtin') {
-        return h('img', { src: MOCHI_IDLE, alt: '', draggable: false })
-      }
       if (pet.kind === 'sheet') {
-        return h('canvas', { ref: canvasRef, width: 192, height: 208, 'aria-label': pet.name })
+        return h('canvas', {
+          ref: canvasRef,
+          width: cellWidth,
+          height: cellHeight,
+          'aria-label': pet.name
+        })
       }
       return h('img', { src: pet.url, alt: '', draggable: false })
     }
 
     function SpriteCanvas({ pet, state }) {
       const canvasRef = useRef(null)
+      const cellWidth = pet.cellWidth || 192
+      const cellHeight = pet.cellHeight || 208
+
       useEffect(() => {
         const canvas = canvasRef.current
         if (!canvas) return
@@ -832,7 +871,17 @@ window.__ModuleLoader__.load({
           ctx.clearRect(0, 0, canvas.width, canvas.height)
           ctx.imageSmoothingEnabled = true
           ctx.imageSmoothingQuality = 'high'
-          ctx.drawImage(img, frame * 192, spec.row * 208, 192, 208, 0, 0, canvas.width, canvas.height)
+          ctx.drawImage(
+            img,
+            frame * cellWidth,
+            spec.row * cellHeight,
+            cellWidth,
+            cellHeight,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          )
         }
 
         const step = (now) => {
@@ -866,18 +915,18 @@ window.__ModuleLoader__.load({
           img.onload = null
           img.onerror = null
         }
-      }, [pet.url, state])
+      }, [pet.url, state, cellWidth, cellHeight])
 
       return h('canvas', {
         ref: canvasRef,
         className: 'dsp-sheet',
-        width: 192,
-        height: 208,
+        width: cellWidth,
+        height: cellHeight,
         'aria-hidden': true
       })
     }
 
-    function PetArtwork({ pet, state, happy, dragging }) {
+    function PetArtwork({ pet, state, dragging }) {
       const stateClass =
         state === 'running'
           ? ' dsp-is-running'
@@ -887,24 +936,15 @@ window.__ModuleLoader__.load({
               ? ' dsp-is-review'
               : ''
 
-      let art
-      if (pet.kind === 'builtin') {
-        art = h('img', {
-          className: 'dsp-art',
-          src: happy ? MOCHI_HAPPY : MOCHI_IDLE,
-          alt: '',
-          draggable: false
-        })
-      } else if (pet.kind === 'sheet') {
-        art = h(SpriteCanvas, { pet, state })
-      } else {
-        art = h('img', {
-          className: 'dsp-art',
-          src: pet.url,
-          alt: '',
-          draggable: false
-        })
-      }
+      const art =
+        pet.kind === 'sheet'
+          ? h(SpriteCanvas, { pet, state })
+          : h('img', {
+              className: 'dsp-art',
+              src: pet.url,
+              alt: '',
+              draggable: false
+            })
 
       return h(
         'div',
@@ -947,7 +987,7 @@ window.__ModuleLoader__.load({
             onClick: onSelect,
             'aria-pressed': selected
           },
-          h('span', { className: 'dsp-thumb' }, h(PetThumb, { pet, t })),
+          h('span', { className: 'dsp-thumb' }, h(PetThumb, { pet })),
           h(
             'span',
             { className: 'dsp-card-copy' },
@@ -956,7 +996,7 @@ window.__ModuleLoader__.load({
           )
         ),
         selected ? h('span', { className: 'dsp-card-check', 'aria-hidden': true }, '✓') : null,
-        pet.kind !== 'builtin'
+        !pet.builtin
           ? h(
               'button',
               {
@@ -1008,22 +1048,53 @@ window.__ModuleLoader__.load({
       const previousRunning = useRef(Boolean(running))
       const previousWaiting = useRef(Boolean(waiting))
 
-      const builtinPet = useMemo(
-        () => ({
-          id: BUILTIN_ID,
-          kind: 'builtin',
-          name: t('pet.builtin.name'),
-          description: t('pet.builtin.desc'),
-          author: t('pet.builtin.author'),
-          createdAt: 0
-        }),
+      const builtinPets = useMemo(
+        () => [
+          {
+            id: 'whale-girl',
+            kind: 'image',
+            builtin: true,
+            portrait: true,
+            url: WHALE_GIRL_IMAGE,
+            name: t('pet.whaleGirl.name'),
+            description: t('pet.whaleGirl.desc'),
+            author: 'MeteorNOX / EthanMaven',
+            createdAt: 0
+          },
+          {
+            id: 'deepseek-girl',
+            kind: 'sheet',
+            builtin: true,
+            url: DEEPSEEK_GIRL_SHEET,
+            cellWidth: BUILTIN_CELL_WIDTH,
+            cellHeight: BUILTIN_CELL_HEIGHT,
+            spriteVersion: 2,
+            name: t('pet.deepseekGirl.name'),
+            description: t('pet.deepseekGirl.desc'),
+            author: 'legeling',
+            createdAt: 0
+          },
+          {
+            id: 'deepseek-whalechan',
+            kind: 'sheet',
+            builtin: true,
+            url: DEEPSEEK_WHALECHAN_SHEET,
+            cellWidth: BUILTIN_CELL_WIDTH,
+            cellHeight: BUILTIN_CELL_HEIGHT,
+            spriteVersion: 2,
+            name: t('pet.whalechan.name'),
+            description: t('pet.whalechan.desc'),
+            author: 'qimi',
+            createdAt: 0
+          }
+        ],
         [t]
       )
 
-      const allPets = useMemo(() => [builtinPet, ...customPets], [builtinPet, customPets])
+      const allPets = useMemo(() => [...builtinPets, ...customPets], [builtinPets, customPets])
       const selectedPet = useMemo(
-        () => allPets.find((pet) => pet.id === settings.selectedId) || builtinPet,
-        [allPets, settings.selectedId, builtinPet]
+        () => allPets.find((pet) => pet.id === settings.selectedId) || builtinPets[0],
+        [allPets, settings.selectedId, builtinPets]
       )
 
       const dimensions = useMemo(
@@ -1098,10 +1169,10 @@ window.__ModuleLoader__.load({
 
       useEffect(() => {
         if (!petsReady) return
-        if (settings.selectedId !== BUILTIN_ID && !customPets.some((pet) => pet.id === settings.selectedId)) {
-          setSettings((current) => ({ ...current, selectedId: BUILTIN_ID }))
+        if (!allPets.some((pet) => pet.id === settings.selectedId)) {
+          setSettings((current) => ({ ...current, selectedId: DEFAULT_PET_ID }))
         }
-      }, [petsReady, customPets, settings.selectedId])
+      }, [petsReady, allPets, settings.selectedId])
 
       useEffect(() => {
         const timer = window.setTimeout(() => persistSettings(settings), 160)
@@ -1226,7 +1297,6 @@ window.__ModuleLoader__.load({
               : settings.reactive && reviewing
                 ? 'review'
                 : 'idle'
-      const happy = boop || artState === 'review' || artState === 'jumping'
 
       const sayClick = useCallback(() => {
         const lines = [
@@ -1342,7 +1412,7 @@ window.__ModuleLoader__.load({
             urlsRef.current.delete(pet.id)
             setCustomPets((current) => current.filter((item) => item.id !== pet.id))
             setSettings((current) =>
-              current.selectedId === pet.id ? { ...current, selectedId: BUILTIN_ID } : current
+              current.selectedId === pet.id ? { ...current, selectedId: DEFAULT_PET_ID } : current
             )
           } catch {
             setImportError(t('err.storage'))
@@ -1696,7 +1766,7 @@ window.__ModuleLoader__.load({
         h(
           'div',
           {
-            className: `dsp-pet${boop ? ' dsp-is-boop' : ''}${artState === 'running' ? ' dsp-is-running' : ''}${artState === 'waiting' ? ' dsp-is-waiting' : ''}${artState === 'review' ? ' dsp-is-review' : ''}${dragging ? ' dsp-is-dragging' : ''}`,
+            className: `dsp-pet${boop ? ' dsp-is-boop' : ''}${artState === 'running' ? ' dsp-is-running' : ''}${artState === 'waiting' ? ' dsp-is-waiting' : ''}${artState === 'review' ? ' dsp-is-review' : ''}${dragging ? ' dsp-is-dragging' : ''}${selectedPet.portrait ? ' dsp-is-portrait' : ''}`,
             style: {
               left: petX,
               top: petY,
@@ -1765,7 +1835,6 @@ window.__ModuleLoader__.load({
             h(PetArtwork, {
               pet: selectedPet,
               state: artState,
-              happy,
               dragging
             })
           )

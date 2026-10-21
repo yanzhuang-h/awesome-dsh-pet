@@ -4,26 +4,36 @@ import { fileURLToPath } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const sourcePath = path.join(root, 'src', 'client.js')
-const idlePath = path.join(root, 'src', 'mochi-idle.svg')
-const happyPath = path.join(root, 'src', 'mochi-happy.svg')
 const outputPath = path.join(root, 'client.js')
 
+const assets = [
+  { placeholder: '__WHALE_GIRL_DATA__', file: 'src/builtins/whale-girl.png', mime: 'image/png' },
+  { placeholder: '__DEEPSEEK_GIRL_SHEET__', file: 'src/builtins/deepseek-girl.webp', mime: 'image/webp' },
+  { placeholder: '__DEEPSEEK_WHALECHAN_SHEET__', file: 'src/builtins/deepseek-whalechan.webp', mime: 'image/webp' }
+]
+
 let source = fs.readFileSync(sourcePath, 'utf8')
-const idle = fs.readFileSync(idlePath)
-const happy = fs.readFileSync(happyPath)
-const idleData = `data:image/svg+xml;base64,${idle.toString('base64')}`
-const happyData = `data:image/svg+xml;base64,${happy.toString('base64')}`
+let totalAssetBytes = 0
 
-if (!source.includes('__MOCHI_IDLE_DATA__') || !source.includes('__MOCHI_HAPPY_DATA__')) {
-  throw new Error('Asset placeholders are missing from src/client.js')
+for (const asset of assets) {
+  const filePath = path.join(root, asset.file)
+  const buffer = fs.readFileSync(filePath)
+  totalAssetBytes += buffer.length
+  if (!source.includes(asset.placeholder)) {
+    throw new Error(`Asset placeholder is missing from src/client.js: ${asset.placeholder}`)
+  }
+  const dataUrl = `data:${asset.mime};base64,${buffer.toString('base64')}`
+  source = source.replaceAll(asset.placeholder, dataUrl)
 }
-if (idle.length > 100_000 || happy.length > 100_000) {
-  throw new Error('The built-in pet artwork is unexpectedly large')
-}
-
-source = source.replace('__MOCHI_IDLE_DATA__', idleData).replace('__MOCHI_HAPPY_DATA__', happyData)
 
 new Function(source)
 
+if (totalAssetBytes > 4 * 1024 * 1024) {
+  throw new Error('Built-in artwork exceeds the 4 MB budget')
+}
+
 fs.writeFileSync(outputPath, source, 'utf8')
-console.log(`Built client.js (${(Buffer.byteLength(source) / 1024).toFixed(1)} KiB)`)
+console.log(
+  `Built client.js (${(Buffer.byteLength(source) / 1024 / 1024).toFixed(2)} MiB, ` +
+    `${(totalAssetBytes / 1024).toFixed(0)} KiB artwork)`
+)
