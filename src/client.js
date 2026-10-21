@@ -14,6 +14,8 @@ window.__ModuleLoader__.load({
     const WHALE_GIRL_IMAGE = '__WHALE_GIRL_DATA__'
     const DEEPSEEK_GIRL_SHEET = '__DEEPSEEK_GIRL_SHEET__'
     const DEEPSEEK_WHALECHAN_SHEET = '__DEEPSEEK_WHALECHAN_SHEET__'
+    const CLICK_PRESS_SOUND = '__CLICK_PRESS_SOUND__'
+    const CLICK_RELEASE_SOUND = '__CLICK_RELEASE_SOUND__'
     const BUILTIN_CELL_WIDTH = 168
     const BUILTIN_CELL_HEIGHT = 182
     const PET_WIDTH = 180
@@ -128,6 +130,8 @@ window.__ModuleLoader__.load({
       'settings.behavior': '相处方式',
       'settings.bubbles': '悄悄话',
       'settings.bubblesHint': '偶尔说句话，也会回应你的点击。',
+      'settings.sound': '轻声回应',
+      'settings.soundHint': '点击她时，轻轻应你一声。',
       'settings.reactive': '跟着工作节奏',
       'settings.reactiveHint': '你忙起来时，她会在旁边跑动。',
       'settings.position': '落脚点',
@@ -242,6 +246,8 @@ window.__ModuleLoader__.load({
       'settings.behavior': 'Together',
       'settings.bubbles': 'Whispers',
       'settings.bubblesHint': 'A few words now and then, plus a reply when you tap.',
+      'settings.sound': 'Little voice',
+      'settings.soundHint': 'A soft sound when you tap her.',
       'settings.reactive': 'Follow your work',
       'settings.reactiveHint': 'She runs along while Harness works.',
       'settings.position': 'Her spot',
@@ -285,6 +291,7 @@ window.__ModuleLoader__.load({
         -webkit-font-smoothing: antialiased;
       }
       .dsp-root button { font: inherit; color: inherit; }
+      .dsp-sound { display: none !important; }
       .dsp-icon { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
       .dsp-pet { position: absolute; z-index: 2; pointer-events: none; animation: dsp-arrive .45s cubic-bezier(.2,.8,.25,1) both; }
       .dsp-stage {
@@ -1239,6 +1246,7 @@ window.__ModuleLoader__.load({
       selectedId: DEFAULT_PET_ID,
       scale: 1,
       bubbles: true,
+      sound: true,
       reactive: true,
       hidden: false,
       x: null,
@@ -1287,6 +1295,7 @@ window.__ModuleLoader__.load({
           selectedId: typeof raw.selectedId === 'string' ? raw.selectedId : DEFAULT_PET_ID,
           scale: Number.isFinite(Number(raw.scale)) ? clamp(Number(raw.scale), 0.65, 1.35) : 1,
           bubbles: raw.bubbles !== false,
+          sound: raw.sound !== false,
           reactive: raw.reactive !== false,
           hidden: raw.hidden === true,
           x: Number.isFinite(Number(raw.x)) ? Number(raw.x) : null,
@@ -1773,6 +1782,8 @@ window.__ModuleLoader__.load({
       const [viewport, setViewport] = useState({ width: window.innerWidth, height: window.innerHeight })
 
       const bubbleTimer = useRef(0)
+      const pressSoundRef = useRef(null)
+      const releaseSoundRef = useRef(null)
       const boopTimer = useRef(0)
       const transientTimer = useRef(0)
       const reviewTimer = useRef(0)
@@ -2067,8 +2078,33 @@ window.__ModuleLoader__.load({
         say(line, 4800)
       }, [say, settings.tone, settings.userName, t])
 
+      const playPetSound = useCallback(() => {
+        if (!settings.sound) return
+        const press = pressSoundRef.current
+        const release = releaseSoundRef.current
+        if (!press || !release) return
+        try {
+          release.pause()
+          release.currentTime = 0
+          press.pause()
+          press.currentTime = 0
+          press.volume = 0.8
+          release.volume = 0.8
+          press.onended = () => {
+            try {
+              release.currentTime = 0
+              const played = release.play()
+              if (played && typeof played.catch === 'function') played.catch(() => {})
+            } catch {}
+          }
+          const played = press.play()
+          if (played && typeof played.catch === 'function') played.catch(() => {})
+        } catch {}
+      }, [settings.sound])
+
       const poke = useCallback(() => {
         if (settings.hidden) return
+        playPetSound()
         setBoop(true)
         if (boopTimer.current) window.clearTimeout(boopTimer.current)
         boopTimer.current = window.setTimeout(() => setBoop(false), 760)
@@ -2076,7 +2112,7 @@ window.__ModuleLoader__.load({
         if (transientTimer.current) window.clearTimeout(transientTimer.current)
         transientTimer.current = window.setTimeout(() => setTransient(null), 1350)
         sayClick()
-      }, [sayClick, settings.hidden])
+      }, [playPetSound, sayClick, settings.hidden])
 
       const onPointerDown = useCallback(
         (event) => {
@@ -2197,6 +2233,7 @@ window.__ModuleLoader__.load({
           ...current,
           scale: 1,
           bubbles: true,
+          sound: true,
           reactive: true,
           tone: 'gentle',
           accent: 'tide',
@@ -2665,6 +2702,13 @@ window.__ModuleLoader__.load({
                           setSettings((current) => ({ ...current, bubbles: !current.bubbles }))
                       }),
                       h(ToggleRow, {
+                        checked: settings.sound,
+                        title: t('settings.sound'),
+                        hint: t('settings.soundHint'),
+                        onToggle: () =>
+                          setSettings((current) => ({ ...current, sound: !current.sound }))
+                      }),
+                      h(ToggleRow, {
                         checked: settings.reactive,
                         title: t('settings.reactive'),
                         hint: t('settings.reactiveHint'),
@@ -2763,6 +2807,20 @@ window.__ModuleLoader__.load({
         'div',
         { className: 'dsp-root', style: themeVars },
         h('style', null, CSS),
+        h('audio', {
+          ref: pressSoundRef,
+          className: 'dsp-sound',
+          src: CLICK_PRESS_SOUND,
+          preload: 'auto',
+          'aria-hidden': true
+        }),
+        h('audio', {
+          ref: releaseSoundRef,
+          className: 'dsp-sound',
+          src: CLICK_RELEASE_SOUND,
+          preload: 'auto',
+          'aria-hidden': true
+        }),
         h(
           'div',
           {

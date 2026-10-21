@@ -34,6 +34,14 @@ The upstream repository distributes this image under its MIT license. It is an u
 - **Source statement:** "Independent AI-generated community interpretation; non-commercial use only. Commercial use is prohibited." The submission describes the character as an independent blue whale-maid variant, not official DeepSeek artwork.
 - **Modifications:** spritesheet resized from 1536×2288 to 1344×2002 (cell size 168×182). No characters were redrawn. Embedded as a data URL in the built client bundle.
 
+## 4. Click voice
+
+- **Files:** `src/builtins/click-press.mp3` and `src/builtins/click-release.mp3` (embedded in `client.js`)
+- **Source:** [comreade-123/DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop), files `renderer/assets/Ya1.mp3` and `renderer/assets/Ya2.mp3`
+- **License:** MIT
+- **Copyright:** Copyright (c) 2026 MeteorNOX; Copyright (c) 2026 EthanMaven
+- **Modifications:** files renamed and embedded as data URLs in the built client bundle; audio content is unchanged.
+
 ## License of this distribution
 
 Because the bundled DeepSeek Girl and Whalechan assets are licensed **CC BY-NC 4.0**, a build that includes all three characters is intended for **non-commercial use**. The MIT license continues to apply to the plugin code and to code contributions; it does not relicense the CC BY-NC artwork.

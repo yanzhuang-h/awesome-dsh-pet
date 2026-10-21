@@ -30,10 +30,22 @@ for (const file of pkg.files || []) {
 if (!patch.includes('awesome-dsh-pet')) fail('cordis.patch.yml does not insert awesome-dsh-pet')
 if (!client.includes("id: 'awesome-dsh-pet'")) fail('client.js does not register awesome-dsh-pet')
 if (!client.includes("name: 'shell.overlay'")) fail('client.js does not register shell.overlay')
-for (const asset of ['whale-girl.png', 'deepseek-girl.webp', 'deepseek-whalechan.webp']) {
+for (const asset of [
+  'whale-girl.png',
+  'deepseek-girl.webp',
+  'deepseek-whalechan.webp',
+  'click-press.mp3',
+  'click-release.mp3'
+]) {
   if (!fs.existsSync(path.join(root, 'src', 'builtins', asset))) fail(`built-in asset is missing: ${asset}`)
 }
-for (const placeholder of ['__WHALE_GIRL_DATA__', '__DEEPSEEK_GIRL_SHEET__', '__DEEPSEEK_WHALECHAN_SHEET__']) {
+for (const placeholder of [
+  '__WHALE_GIRL_DATA__',
+  '__DEEPSEEK_GIRL_SHEET__',
+  '__DEEPSEEK_WHALECHAN_SHEET__',
+  '__CLICK_PRESS_SOUND__',
+  '__CLICK_RELEASE_SOUND__'
+]) {
   if (client.includes(placeholder)) fail(`client.js still contains the ${placeholder} placeholder`)
 }
 try {

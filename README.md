@@ -39,6 +39,7 @@
 | --- | --- |
 | **给她的名字** | 角色卡片、预览和桌宠标题都使用你的叫法 |
 | **她怎么称呼你** | 在悄悄话和点击回应里出现你的名字 |
+| **轻声回应** | 点击时播放原挂件的两段小鲸鱼应答声，可随时关闭 |
 | **她的性子** | 温柔 / 元气 / 安静，三套不同的回应语气 |
 | **今天的海色** | 手帐高亮、选中状态、滑杆与桌宠光晕一起换色 |
 | **存在感** | 65%–135% 的大小 |
@@ -51,7 +52,7 @@
 <p align="center">
   <img src="docs/personalization.png" alt="相处方式和落脚点设置" width="680">
   <br>
-  <sub>继续向下，是存在感、悄悄话和落脚点。</sub>
+  <sub>继续向下，是存在感、悄悄话、轻声回应和落脚点。</sub>
 </p>
 
 ## 内置角色
@@ -71,6 +72,7 @@ Harness 启动后默认出现的是 **鲸汐**。打开鲸屿手帐，可以在�
 - **随 Harness 一起出现**：注册为 immediate Client 插件，无需单独启动。
 - **Codex Pet 图集兼容**：读取 `pet.json` + `spritesheet.webp`，支持 v1（1536×1872，8×9）与 v2（1536×2288，8×11）。
 - **会看状态的小家伙**：任务进行时跑动，等待确认时守候，一轮结束时检查，点击时挥手。
+- **轻声回应**：点击时播放原挂件的双段小鲸鱼音效，可在手帐里关闭。
 - **位置与尺寸记忆**：可以按住拖动，位置写入本地设置；刷新或重启后仍然在原处。
 - **个性化手帐**：昵称、称呼、性格语气、主题色和位置预设都能调，且只保存在本机。
 - **三种角色来源**：内置角色、Codex 角色包、单张图片；支持删除、缩放、恢复默认位置。
@@ -154,7 +156,7 @@ git pull
 | 操作 | 效果 |
 | --- | --- |
 | 悬停角色 | 显示设置齿轮和隐藏按钮 |
-| 单击角色 | 开心表情 / 动作 + 随机回应 |
+| 单击角色 | 开心表情 / 动作 + 随机回应（可在手帐里关闭声音） |
 | 按住拖动 | 移动桌宠，松手后保存位置 |
 | 点击气泡 | 收起当前回应 |
 | 设置齿轮 | 打开「鲸屿手帐」 |
@@ -283,6 +285,9 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 **桌宠挡住了输入框？**
 拖动它到其他位置，或点击悬停时的隐藏按钮。位置会保存。
 
+**点击没有声音？**
+打开鲸屿手帐，确认 **轻声回应** 已开启；同时检查系统和 Harness 是否静音。音效需要一次真实点击/键盘操作后才会播放，这是浏览器的自动播放限制。
+
 **可以商用吗？**
 插件代码是 MIT；但内置的 DeepSeek Girl 和 Whalechan 素材是 CC BY-NC 4.0，所以**包含它们的发行版不能直接商用**。商业使用请移除这两个素材并重新构建，或联系原作者取得授权，详见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。
 
@@ -292,6 +297,7 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 ## 致谢与声明
 
 - 默认「鲸汐 / Whale Girl」形象来自 [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop)，遵循其 MIT 许可。
+- 点击音效 `Ya1.mp3` / `Ya2.mp3` 同样来自该挂件仓库，遵循其 MIT 许可；本项目将其重命名为 `click-press.mp3` / `click-release.mp3` 并嵌入 Client bundle。
 - **深澜（DeepSeek Girl）** 由 [legeling](https://github.com/legeling) 创作，**鲸酱（Whalechan）** 由 [qimi](https://github.com/qishichuan) 创作，均来自 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet)。
 - 角色格式与动画灵感来自 Codex Pet 社区，感谢其开放的图集规范。
 - 插件代码、鲸屿手帐与界面整合由 [yanzhuang-h](https://github.com/yanzhuang-h) 维护。

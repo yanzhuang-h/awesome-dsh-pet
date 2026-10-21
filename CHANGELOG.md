@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.1 — 2026-10-21
+
+### Added
+
+- Restored the original two-part whale click voice (`Ya1` / `Ya2`) from the reference widget.
+- Added a **轻声回应 / Little voice** toggle in the journal (on by default).
+- The voice plays on pointer clicks and keyboard activation, and can be muted without affecting the speech bubble.
+- Added sound licensing and troubleshooting notes.
+
 ## 1.2.0 — 2026-10-21
 
 ### Added
