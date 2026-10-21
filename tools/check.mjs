@@ -34,6 +34,7 @@ for (const asset of [
   'whale-girl.png',
   'deepseek-girl.webp',
   'deepseek-whalechan.webp',
+  'shark-pepper.webp',
   'click-press.mp3',
   'click-release.mp3'
 ]) {
@@ -43,6 +44,7 @@ for (const placeholder of [
   '__WHALE_GIRL_DATA__',
   '__DEEPSEEK_GIRL_SHEET__',
   '__DEEPSEEK_WHALECHAN_SHEET__',
+  '__SHARK_PEPPER_SHEET__',
   '__CLICK_PRESS_SOUND__',
   '__CLICK_RELEASE_SOUND__'
 ]) {

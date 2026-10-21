@@ -14,6 +14,7 @@ window.__ModuleLoader__.load({
     const WHALE_GIRL_IMAGE = '__WHALE_GIRL_DATA__'
     const DEEPSEEK_GIRL_SHEET = '__DEEPSEEK_GIRL_SHEET__'
     const DEEPSEEK_WHALECHAN_SHEET = '__DEEPSEEK_WHALECHAN_SHEET__'
+    const SHARK_PEPPER_SHEET = '__SHARK_PEPPER_SHEET__'
     const CLICK_PRESS_SOUND = '__CLICK_PRESS_SOUND__'
     const CLICK_RELEASE_SOUND = '__CLICK_RELEASE_SOUND__'
     const BUILTIN_CELL_WIDTH = 168
@@ -57,6 +58,11 @@ window.__ModuleLoader__.load({
       'pet.whalechan.name': '鲸酱',
       'pet.whalechan.source': 'Whalechan',
       'pet.whalechan.desc': 'Q 版蓝鲸女仆，抱着小本子陪你在 Harness 里工作。',
+      'pet.sharkPepper.name': '鲨鱼辣椒',
+      'pet.sharkPepper.source': '铁甲小宝 · 同人',
+      'pet.sharkPepper.desc': '《铁甲小宝》鲨鱼辣椒的同人伙伴：日常是经典鲨鱼机器人，跳跃时会超级变换，还会举起蓝色牙刷。',
+      'pet.sharkPepper.author': '社区同人',
+      'tag.fanArt': '非官方同人',
       'bubble.morning': '早上好呀，今天也慢慢来。',
       'bubble.forenoon': '上午好，记得喝口水再继续。',
       'bubble.noon': '中午啦，要好好吃饭哦。',
@@ -173,6 +179,11 @@ window.__ModuleLoader__.load({
       'pet.whalechan.name': 'Whalechan',
       'pet.whalechan.source': 'Blue Whale Maid',
       'pet.whalechan.desc': 'A super-deformed blue whale maid with a little notebook, keeping you company in Harness.',
+      'pet.sharkPepper.name': 'Shark Pepper',
+      'pet.sharkPepper.source': 'B-Robo Kabutack · Fan art',
+      'pet.sharkPepper.desc': 'An unofficial Shark Pepper companion inspired by B-Robo Kabutack, with a classic shark robot form, a super transformation, and a blue toothbrush.',
+      'pet.sharkPepper.author': 'Community fan art',
+      'tag.fanArt': 'Unofficial fan art',
       'bubble.morning': 'Morning. Let us take today gently.',
       'bubble.forenoon': 'Good morning. Remember to sip some water.',
       'bubble.noon': 'It is noon. Please have a proper lunch.',
@@ -1425,6 +1436,7 @@ window.__ModuleLoader__.load({
     }
 
     function tagFor(pet, t) {
+      if (pet.tagKey) return t(pet.tagKey)
       if (pet.builtin) return t('tag.builtin')
       if (pet.kind === 'sheet') return `${t('tag.codex')} v${pet.spriteVersion || 1}`
       return t('tag.image')
@@ -1839,6 +1851,21 @@ window.__ModuleLoader__.load({
             sourceKey: 'pet.whalechan.source',
             description: t('pet.whalechan.desc'),
             author: 'qimi',
+            createdAt: 0
+          },
+          {
+            id: 'shark-pepper',
+            kind: 'sheet',
+            builtin: true,
+            url: SHARK_PEPPER_SHEET,
+            cellWidth: 192,
+            cellHeight: 208,
+            spriteVersion: 2,
+            tagKey: 'tag.fanArt',
+            name: t('pet.sharkPepper.name'),
+            sourceKey: 'pet.sharkPepper.source',
+            description: t('pet.sharkPepper.desc'),
+            author: t('pet.sharkPepper.author'),
             createdAt: 0
           }
         ],

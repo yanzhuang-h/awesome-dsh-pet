@@ -10,6 +10,7 @@ const assets = [
   { placeholder: '__WHALE_GIRL_DATA__', file: 'src/builtins/whale-girl.png', mime: 'image/png' },
   { placeholder: '__DEEPSEEK_GIRL_SHEET__', file: 'src/builtins/deepseek-girl.webp', mime: 'image/webp' },
   { placeholder: '__DEEPSEEK_WHALECHAN_SHEET__', file: 'src/builtins/deepseek-whalechan.webp', mime: 'image/webp' },
+  { placeholder: '__SHARK_PEPPER_SHEET__', file: 'src/builtins/shark-pepper.webp', mime: 'image/webp' },
   { placeholder: '__CLICK_PRESS_SOUND__', file: 'src/builtins/click-press.mp3', mime: 'audio/mpeg' },
   { placeholder: '__CLICK_RELEASE_SOUND__', file: 'src/builtins/click-release.mp3', mime: 'audio/mpeg' }
 ]

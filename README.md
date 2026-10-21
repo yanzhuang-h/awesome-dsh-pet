@@ -27,7 +27,7 @@
 - 在「温柔 / 元气 / 安静」三种性子之间切换，让她用不同的语气回应你；
 - 用「潮汐蓝 / 暮光紫 / 海盐青 / 樱贝粉」换掉她身边的光；
 - 调整存在感、落脚点，或让她跟着 Harness 的工作节奏一起跑动；
-- 切换内置的 **深澜（DeepSeek Girl）**、**鲸酱（Whalechan）**，或导入自己的 Codex Pet 角色包。
+- 切换内置的 **深澜（DeepSeek Girl）**、**鲸酱（Whalechan）**、**鲨鱼辣椒（Shark Pepper）**，或导入自己的 Codex Pet 角色包。
 
 这个项目面向 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) 的图集规格做了兼容，但不是 Codex 官方项目，也与 DeepSeek / OpenAI 没有隶属关系。
 
@@ -57,15 +57,18 @@
 
 ## 内置角色
 
-Harness 启动后默认出现的是 **鲸汐**。打开鲸屿手帐，可以在三位初始角色之间切换，不需要额外下载。
+Harness 启动后默认出现的是 **鲸汐**。打开鲸屿手帐，可以在四位初始角色之间切换，不需要额外下载。
 
 | 角色 | 来源 | 授权 |
 | --- | --- | --- |
 | **鲸汐 / Whale Girl**（默认） | [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop) 的鲸鱼娘形象 | MIT |
 | **深澜 / DeepSeek Girl** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [legeling](https://github.com/legeling) | CC BY-NC 4.0 |
 | **鲸酱 / Whalechan** | [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet) / [qimi](https://github.com/qishichuan) | CC BY-NC 4.0 |
+| **鲨鱼辣椒 / Shark Pepper** | 《铁甲小宝》同人形象，社区制作 | 非官方同人 · 非商业 |
 
 内置图片经过裁切、缩放和重新打包，具体来源、署名和修改说明见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。其中 CC BY-NC 素材仅限非商业使用，**不适用**于本仓库代码的 MIT 许可。
+
+> 鲨鱼辣椒是《铁甲小宝》角色的非官方同人演绎，不代表官方，版权归原权利方所有；仅随本项目作非商业展示，如权利方要求会移除。
 
 ## 特性
 
@@ -235,7 +238,7 @@ awesome-dsh-pet/
 ├─ client.js            # 构建产物：Client 半，注册到 shell.overlay
 ├─ src/
 │  ├─ client.js         # 可维护源码
-│  └─ builtins/         # 三位内置角色的图片 / 图集
+│  └─ builtins/         # 四位内置角色的图片 / 图集
 ├─ index.js             # Host 半，空实现
 ├─ cordis.patch.yml     # 插入 awesome-dsh-pet 这一行
 ├─ package.json         # bundle + Client manifest
@@ -289,7 +292,7 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 打开鲸屿手帐，确认 **轻声回应** 已开启；同时检查系统和 Harness 是否静音。音效需要一次真实点击/键盘操作后才会播放，这是浏览器的自动播放限制。
 
 **可以商用吗？**
-插件代码是 MIT；但内置的 DeepSeek Girl 和 Whalechan 素材是 CC BY-NC 4.0，所以**包含它们的发行版不能直接商用**。商业使用请移除这两个素材并重新构建，或联系原作者取得授权，详见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。
+插件代码是 MIT；但内置的 DeepSeek Girl 和 Whalechan 素材是 CC BY-NC 4.0，鲨鱼辣椒是非官方同人形象，所以**包含这些素材的发行版不能直接商用**。商业使用请移除它们并重新构建，或联系原作者 / 权利方取得授权，详见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。
 
 **如何彻底移除？**
 在插件页面移除插件；如需要，再清除 Harness 站点的 localStorage / IndexedDB 数据。
@@ -299,12 +302,13 @@ Built and tested against DeepSeek Harness `0.2.1-rc.2`. DSH 的 Client Slot、�
 - 默认「鲸汐 / Whale Girl」形象来自 [DeepSeek-Whale-widget-desktop](https://github.com/comreade-123/DeepSeek-Whale-widget-desktop)，遵循其 MIT 许可。
 - 点击音效 `Ya1.mp3` / `Ya2.mp3` 同样来自该挂件仓库，遵循其 MIT 许可；本项目将其重命名为 `click-press.mp3` / `click-release.mp3` 并嵌入 Client bundle。
 - **深澜（DeepSeek Girl）** 由 [legeling](https://github.com/legeling) 创作，**鲸酱（Whalechan）** 由 [qimi](https://github.com/qishichuan) 创作，均来自 [awesome-codex-pet](https://github.com/legeling/awesome-codex-pet)。
+- **鲨鱼辣椒 / Shark Pepper** 是《铁甲小宝》角色的社区同人演绎，非官方、非商业；原角色及相关权利归其权利方所有。
 - 角色格式与动画灵感来自 Codex Pet 社区，感谢其开放的图集规范。
 - 插件代码、鲸屿手帐与界面整合由 [yanzhuang-h](https://github.com/yanzhuang-h) 维护。
 - 这是一个社区项目，与 DeepSeek、OpenAI、Codex 官方均无隶属关系；内置角色是社区形象 / 非官方演绎。
 
 ## License
 
-**代码**以 [MIT](LICENSE) 许可发布。**内置角色美术**不属于 MIT 代码许可：鲸汐 / Whale Girl 素材遵循上游 MIT / 署名要求；DeepSeek Girl 与 Whalechan 遵循 **CC BY-NC 4.0**，仅限非商业使用。
+**代码**以 [MIT](LICENSE) 许可发布。**内置角色美术**不属于 MIT 代码许可：鲸汐 / Whale Girl 素材遵循上游 MIT / 署名要求；DeepSeek Girl 与 Whalechan 遵循 **CC BY-NC 4.0**；鲨鱼辣椒为《铁甲小宝》非官方同人，不附带商业授权，仅作非商业展示。
 
 因此，包含全部内置素材的发行版整体应按**非商业用途**使用；如需商业使用，请移除 CC BY-NC 素材或联系原作者取得授权。完整说明见 [ASSETS-LICENSE.md](ASSETS-LICENSE.md)。导入的社区角色素材不属于本项目，遵循各自作者 / 角色包的许可。

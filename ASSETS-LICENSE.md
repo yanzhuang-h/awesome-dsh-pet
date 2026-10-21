@@ -42,14 +42,24 @@ The upstream repository distributes this image under its MIT license. It is an u
 - **Copyright:** Copyright (c) 2026 MeteorNOX; Copyright (c) 2026 EthanMaven
 - **Modifications:** files renamed and embedded as data URLs in the built client bundle; audio content is unchanged.
 
+## 5. Shark Pepper (unofficial fan art)
+
+- **Character:** 鲨鱼辣椒 / Shark Pepper
+- **File:** `src/builtins/shark-pepper.webp` (embedded in `client.js`)
+- **Original work:** 《铁甲小宝》 / *B-Robo Kabutack*
+- **Nature:** An unofficial community fan-art interpretation made for this project, based on the repository owner's supplied references. It is not official artwork and is not affiliated with or endorsed by the rights holders.
+- **Rights:** All rights to the original character and related marks remain with their respective holders. This project does not grant a license to the underlying character.
+- **Use:** Included for non-commercial fan display only. Do not present it as official material or use it commercially. The asset will be removed on request from a rights holder.
+- **Modifications:** The 1536×2288 PNG sheet was encoded as a 1536×2288 WebP (quality 90) and embedded as a data URL in the client bundle. No frames were redrawn.
+
 ## License of this distribution
 
-Because the bundled DeepSeek Girl and Whalechan assets are licensed **CC BY-NC 4.0**, a build that includes all three characters is intended for **non-commercial use**. The MIT license continues to apply to the plugin code and to code contributions; it does not relicense the CC BY-NC artwork.
+Because the bundled DeepSeek Girl and Whalechan assets are licensed **CC BY-NC 4.0**, and Shark Pepper is unofficial non-commercial fan art, a build that includes all bundled characters is intended for **non-commercial use**. The MIT license continues to apply to the plugin code and to code contributions; it does not relicense the CC BY-NC or fan-art assets.
 
 If you want to use the plugin commercially:
 
-1. remove the CC BY-NC assets from `src/builtins/`, update `src/client.js` and `tools/build.mjs`, and rebuild; or
-2. obtain separate commercial permission from the original character authors.
+1. remove the CC BY-NC and fan-art assets from `src/builtins/`, update `src/client.js` and `tools/build.mjs`, and rebuild; or
+2. obtain separate commercial permission from the original character authors and rights holders.
 
 ## Attribution and takedown
 

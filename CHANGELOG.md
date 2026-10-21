@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.0 — 2026-10-21
+
+### Added
+
+- Added **鲨鱼辣椒 / Shark Pepper** as the fourth built-in character, with all standard v2 animation rows and the original pixel-art sheet.
+- The character is clearly labelled as unofficial fan art inspired by 《铁甲小宝》 / *B-Robo Kabutack*; original rights remain with the rights holders.
+- Added a dedicated fan-art notice and takedown note in `ASSETS-LICENSE.md`.
+
+### Changed
+
+- The journal gallery now shows four initial characters.
+- Updated the README built-in table, license notes, credits, and settings screenshot.
+
 ## 1.2.1 — 2026-10-21
 
 ### Added
