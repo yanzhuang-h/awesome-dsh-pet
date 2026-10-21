@@ -12,7 +12,10 @@ const assets = [
   { placeholder: '__DEEPSEEK_WHALECHAN_SHEET__', file: 'src/builtins/deepseek-whalechan.webp', mime: 'image/webp' },
   { placeholder: '__SHARK_PEPPER_SHEET__', file: 'src/builtins/shark-pepper.webp', mime: 'image/webp' },
   { placeholder: '__CLICK_PRESS_SOUND__', file: 'src/builtins/click-press.mp3', mime: 'audio/mpeg' },
-  { placeholder: '__CLICK_RELEASE_SOUND__', file: 'src/builtins/click-release.mp3', mime: 'audio/mpeg' }
+  { placeholder: '__CLICK_RELEASE_SOUND__', file: 'src/builtins/click-release.mp3', mime: 'audio/mpeg' },
+  { placeholder: '__SHARK_CLICK_1__', file: 'src/builtins/shark-click-1.wav', mime: 'audio/wav' },
+  { placeholder: '__SHARK_CLICK_2__', file: 'src/builtins/shark-click-2.wav', mime: 'audio/wav' },
+  { placeholder: '__SHARK_CLICK_3__', file: 'src/builtins/shark-click-3.wav', mime: 'audio/wav' }
 ]
 
 let source = fs.readFileSync(sourcePath, 'utf8')

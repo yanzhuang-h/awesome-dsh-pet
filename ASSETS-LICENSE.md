@@ -52,6 +52,12 @@ The upstream repository distributes this image under its MIT license. It is an u
 - **Use:** Included for non-commercial fan display only. Do not present it as official material or use it commercially. The asset will be removed on request from a rights holder.
 - **Modifications:** The 1536×2288 PNG sheet was encoded as a 1536×2288 WebP (quality 90) and embedded as a data URL in the client bundle. No frames were redrawn.
 
+## 6. Shark Pepper click effects
+
+- **Files:** `src/builtins/shark-click-1.wav`, `shark-click-2.wav`, `shark-click-3.wav` (embedded in `client.js`)
+- **Nature:** Original mechanical click / servo / growl effects synthesized for this project. No third-party audio samples or voice recordings are included.
+- **License:** MIT, together with the plugin code.
+
 ## License of this distribution
 
 Because the bundled DeepSeek Girl and Whalechan assets are licensed **CC BY-NC 4.0**, and Shark Pepper is unofficial non-commercial fan art, a build that includes all bundled characters is intended for **non-commercial use**. The MIT license continues to apply to the plugin code and to code contributions; it does not relicense the CC BY-NC or fan-art assets.

@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.5.0 — 2026-10-21
+
+### Added
+
+- A dedicated **Shark Pepper click sound pack** with three original synthesized effects: mechanical chomp, servo clack, and low robotic growl.
+- A random sound plays when Shark Pepper is clicked; the shared **轻声回应** toggle mutes it together with the whale voice.
+- Occasional onomatopoeia prefixes on his click bubbles: **咔嚓！ / 嘎嘣！ / 嗡——** (English: CLANK! / CHOMP! / GRRR—).
+- The whale companions keep the original two-part duck click voice.
+
+### Notes
+
+- The effects are synthesized locally from oscillators and noise; no third-party voice pack or copyrighted audio is included.
+- Switching characters stops the previous character's click sounds.
+
 ## 1.4.0 — 2026-10-21
 
 ### Added

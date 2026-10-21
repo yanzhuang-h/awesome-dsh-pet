@@ -17,6 +17,11 @@ window.__ModuleLoader__.load({
     const SHARK_PEPPER_SHEET = '__SHARK_PEPPER_SHEET__'
     const CLICK_PRESS_SOUND = '__CLICK_PRESS_SOUND__'
     const CLICK_RELEASE_SOUND = '__CLICK_RELEASE_SOUND__'
+    const SHARK_CLICK_SOUNDS = [
+      '__SHARK_CLICK_1__',
+      '__SHARK_CLICK_2__',
+      '__SHARK_CLICK_3__'
+    ]
     const BUILTIN_CELL_WIDTH = 168
     const BUILTIN_CELL_HEIGHT = 182
     const PET_WIDTH = 180
@@ -119,6 +124,9 @@ window.__ModuleLoader__.load({
       'pet.sharkPepper.running': '上啊！本大爷在旁边给你压阵。',
       'pet.sharkPepper.waiting': '喂，轮到你拍板了，别磨蹭。',
       'pet.sharkPepper.done': '干得漂亮。这才像本大爷看中的人。',
+      'pet.sharkPepper.noise1': '咔嚓！',
+      'pet.sharkPepper.noise2': '嘎嘣！',
+      'pet.sharkPepper.noise3': '嗡——',
       'tag.fanArt': '非官方同人',
       'bubble.morning': '早上好呀，今天也慢慢来。',
       'bubble.forenoon': '上午好，记得喝口水再继续。',
@@ -262,6 +270,9 @@ window.__ModuleLoader__.load({
       'pet.sharkPepper.running': "Go! I'm right here backing you up.",
       'pet.sharkPepper.waiting': "Hey, it's your call. Don't keep me waiting.",
       'pet.sharkPepper.done': "Nice work. That's exactly why I picked you.",
+      'pet.sharkPepper.noise1': 'CLANK!',
+      'pet.sharkPepper.noise2': 'CHOMP!',
+      'pet.sharkPepper.noise3': 'GRRR—',
       'tag.fanArt': 'Unofficial fan art',
       'bubble.morning': 'Morning. Let us take today gently.',
       'bubble.forenoon': 'Good morning. Remember to sip some water.',
@@ -1875,6 +1886,7 @@ window.__ModuleLoader__.load({
       const bubbleTimer = useRef(0)
       const pressSoundRef = useRef(null)
       const releaseSoundRef = useRef(null)
+      const sharkSoundRefs = useRef([])
       const boopTimer = useRef(0)
       const transientTimer = useRef(0)
       const reviewTimer = useRef(0)
@@ -2187,17 +2199,47 @@ window.__ModuleLoader__.load({
           const namedKey = voicePack?.named?.[tone] || `bubble.${tone}Named`
           lines.push(t(namedKey).replaceAll('{name}', () => settings.userName))
         }
-        const line = pickRandom(lines, lastClickLine.current)
+        let line = pickRandom(lines, lastClickLine.current)
+        if (selectedPet.id === 'shark-pepper' && Math.random() < 0.35) {
+          const noise = t(`pet.sharkPepper.noise${1 + Math.floor(Math.random() * 3)}`)
+          if (noise) line = /[A-Za-z]/.test(noise) ? `${noise} ${line}` : noise + line
+        }
         lastClickLine.current = line
         say(line, 4800)
-      }, [say, settings.tone, settings.userName, t, voicePack])
+      }, [say, selectedPet.id, settings.tone, settings.userName, t, voicePack])
 
       const playPetSound = useCallback(() => {
         if (!settings.sound) return
+        if (selectedPet.id === 'shark-pepper') {
+          const sounds = sharkSoundRefs.current.filter(Boolean)
+          if (sounds.length === 0) return
+          const press = pressSoundRef.current
+          const release = releaseSoundRef.current
+          try {
+            if (press) {
+              press.pause()
+              press.onended = null
+            }
+            if (release) release.pause()
+            for (const sound of sounds) {
+              sound.pause()
+              sound.currentTime = 0
+            }
+            const sound = sounds[Math.floor(Math.random() * sounds.length)]
+            sound.volume = 0.66
+            const played = sound.play()
+            if (played && typeof played.catch === 'function') played.catch(() => {})
+          } catch {}
+          return
+        }
+
         const press = pressSoundRef.current
         const release = releaseSoundRef.current
         if (!press || !release) return
         try {
+          for (const sound of sharkSoundRefs.current) {
+            if (sound) sound.pause()
+          }
           release.pause()
           release.currentTime = 0
           press.pause()
@@ -2214,7 +2256,7 @@ window.__ModuleLoader__.load({
           const played = press.play()
           if (played && typeof played.catch === 'function') played.catch(() => {})
         } catch {}
-      }, [settings.sound])
+      }, [selectedPet.id, settings.sound])
 
       const poke = useCallback(() => {
         if (settings.hidden) return
@@ -2935,6 +2977,18 @@ window.__ModuleLoader__.load({
           preload: 'auto',
           'aria-hidden': true
         }),
+        ...SHARK_CLICK_SOUNDS.map((src, index) =>
+          h('audio', {
+            key: `shark-sound-${index}`,
+            ref: (element) => {
+              if (element) sharkSoundRefs.current[index] = element
+            },
+            className: 'dsp-sound',
+            src,
+            preload: 'auto',
+            'aria-hidden': true
+          })
+        ),
         h(
           'div',
           {

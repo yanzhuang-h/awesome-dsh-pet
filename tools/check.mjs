@@ -36,7 +36,10 @@ for (const asset of [
   'deepseek-whalechan.webp',
   'shark-pepper.webp',
   'click-press.mp3',
-  'click-release.mp3'
+  'click-release.mp3',
+  'shark-click-1.wav',
+  'shark-click-2.wav',
+  'shark-click-3.wav'
 ]) {
   if (!fs.existsSync(path.join(root, 'src', 'builtins', asset))) fail(`built-in asset is missing: ${asset}`)
 }
@@ -46,7 +49,10 @@ for (const placeholder of [
   '__DEEPSEEK_WHALECHAN_SHEET__',
   '__SHARK_PEPPER_SHEET__',
   '__CLICK_PRESS_SOUND__',
-  '__CLICK_RELEASE_SOUND__'
+  '__CLICK_RELEASE_SOUND__',
+  '__SHARK_CLICK_1__',
+  '__SHARK_CLICK_2__',
+  '__SHARK_CLICK_3__'
 ]) {
   if (client.includes(placeholder)) fail(`client.js still contains the ${placeholder} placeholder`)
 }
