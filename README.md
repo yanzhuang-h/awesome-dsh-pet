@@ -60,6 +60,8 @@ git clone https://github.com/yanzhuang-h/awesome-dsh-pet.git
 
 把仓库放到一个自己方便维护的目录，例如 `E:\Projects\awesome-dsh-pet`。
 
+> 下面命令里的 `E:\Projects\awesome-dsh-pet` 要换成你机器上实际的克隆路径。
+
 ### 2. 使用 Harness 自带的 dsh 命令安装
 
 `desktop` 是桌面端保留 profile，必须使用 **Harness 安装目录里的** `dsh.cmd`。把下面的 DSH 路径替换成你的实际安装位置：
